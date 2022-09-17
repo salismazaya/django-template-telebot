@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -69,17 +69,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'main.context_processors.main'
             ],
         },
     },
 ]
-
-if DEBUG:
-    TEMPLATES[0]['OPTIONS']['context_processors'].append('main.context_processors.debug')
-else:
-    TEMPLATES[0]['OPTIONS']['context_processors'].append('main.context_processors.production')
-
 
 WSGI_APPLICATION = 'django_project.wsgi.application'
 
@@ -147,6 +140,4 @@ STATIC_ROOT = os.environ.get('STATIC_ROOT', BASE_DIR / 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-PUBLIC_CONTEXT = {
-    'TITLE': 'Judul'
-}
+TELEGRAM_BOT_TOKEN = os.environ['TELEGRAM_BOT_TOKEN']
