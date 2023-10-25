@@ -1,4 +1,5 @@
 from django.apps import AppConfig
+from django.conf import settings
 import os, threading
 
 class MainConfig(AppConfig):
@@ -16,6 +17,7 @@ class MainConfig(AppConfig):
 
         import main.bot
 
-        t = threading.Thread(target = main.bot.bot.polling)
-        t.setDaemon(True)
-        t.start()
+        if settings.DEBUG:
+            t = threading.Thread(target = main.bot.bot.polling)
+            t.setDaemon(True)
+            t.start()
