@@ -136,6 +136,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.environ.get('STATIC_ROOT', BASE_DIR / 'staticfiles')
 
+USE_WHITENOISE = os.environ.get('USE_WHITENOISE', 'True') == 'True'
+
+if USE_WHITENOISE:
+    MIDDLEWARE.insert(0, 'whitenoise.middleware.WhiteNoiseMiddleware')
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
