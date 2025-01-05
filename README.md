@@ -1,1 +1,1 @@
-# django wsgi + tailwind + aplhinejs
+# Async Telebot with Django admin panel

@@ -12,7 +12,7 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-load_dotenv('.env.production')
+load_dotenv()
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_project.settings')
 
